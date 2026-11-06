@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: Apache-2.0
+# Browser evaluation on Windows Docker Desktop; no phone media is published.
+name: aicc-sales-local
+services:
+  aicc:
+    image: aicc-sales-local:windows
+    env_file: !override
+      - path: .env.windows-local
+        required: true
+    environment:
+      AICC_BOT_ENABLED: "false"
+      AICC_PROVIDER: qwen
+      AICC_OUTBOUND_ENDPOINT: ""
+      AICC_TRANSCRIPTION_ENABLED: "false"
+      AICC_SEED: demo
+      AICC_SECURE_COOKIES: "false"
+    ports: !override
+      - "127.0.0.1:${AICC_LOCAL_HTTP_PORT:-8080}:8080"
+  freeswitch:
+    ports: !reset []
+networks:
+  default:
+    internal: true
