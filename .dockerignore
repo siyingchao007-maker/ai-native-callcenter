@@ -19,6 +19,7 @@ web/src/routeTree.gen.ts
 
 # Local configuration and scratch state.
 .env
+.env.windows-local
 *.log
 .DS_Store
 

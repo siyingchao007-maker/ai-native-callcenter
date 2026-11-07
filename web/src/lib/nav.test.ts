@@ -30,6 +30,7 @@ describe('the sidebar each role gets', () => {
       '/admin/numbers',
       '/admin/bots',
       '/admin/campaigns',
+      '/admin/callbacks',
       '/admin/dnc',
       '/admin/cdr',
       '/admin/reports',
@@ -159,5 +160,13 @@ describe('the breadcrumb', () => {
       { labelKey: 'nav.manage', to: '/admin' },
       { labelKey: 'nav.bots' },
     ])
+  })
+})
+
+
+describe('the administrator landing label', () => {
+  it('names the admin home as the sales workspace', () => {
+    const home = NAV.flatMap((group) => group.items).find((item) => item.to === '/admin')
+    expect(home?.labelKey).toBe('nav.salesWorkbench')
   })
 })
